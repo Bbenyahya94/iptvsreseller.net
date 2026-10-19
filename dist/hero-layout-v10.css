@@ -1,0 +1,42 @@
+/* One reserved display area for the panel artwork: never over the content. */
+.panelhero .wrap {
+  position: relative;
+  min-height: 238px;
+  padding-right: 230px;
+}
+
+.panelhero .wrap > :not(.panelhero-logo-3d) {
+  position: relative;
+  z-index: 2;
+}
+
+.panelhero .panelhero-logo-3d {
+  position: absolute;
+  z-index: 1;
+  top: 28px;
+  right: 28px;
+  width: 166px;
+  height: 166px;
+  margin: 0;
+  pointer-events: none;
+  animation: panel-logo-orbit 7s ease-in-out infinite;
+}
+
+@keyframes panel-logo-orbit {
+  0%, 100% { transform: perspective(620px) rotateY(-10deg) rotateX(3deg) translate3d(0, 0, 0); }
+  50% { transform: perspective(620px) rotateY(10deg) rotateX(-3deg) translate3d(-7px, 12px, 0); }
+}
+
+@media (min-width: 701px) and (max-width: 980px) {
+  .panelhero .wrap { min-height: 226px; padding-right: 195px; }
+  .panelhero .panelhero-logo-3d { top: 24px; right: 22px; width: 142px; height: 142px; }
+}
+
+@media (max-width: 700px) {
+  .panelhero .wrap { min-height: 0; padding: 142px 20px 24px; }
+  .panelhero .panelhero-logo-3d { top: 20px; right: 20px; width: 104px; height: 104px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panelhero .panelhero-logo-3d { animation: none; }
+}
